@@ -8,3 +8,4 @@ url: "http://geteventflow.net"
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
