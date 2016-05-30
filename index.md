@@ -35,3 +35,4 @@ using (var resolver = EventFlowOptions.New
 View the GitHub project page at
 [https://github.com/rasmus/EventFlow](https://github.com/rasmus/EventFlow)
 for more information.
+
