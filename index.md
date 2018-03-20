@@ -2,9 +2,11 @@
 layout: frontpage
 ---
 
-[EventFlow](https://github.com/rasmus/EventFlow)
+[EventFlow](https://github.com/eventflow/EventFlow)
 is a easy to use async/await first CQRS+ES framework for the Microsoft .NET
 platform.
+
+View documentation at <a href="http://docs.geteventflow.net/">http://docs.geteventflow.net/</a>.
 
 {% highlight csharp %}
 using (var resolver = EventFlowOptions.New
@@ -33,6 +35,6 @@ using (var resolver = EventFlowOptions.New
 
 
 View the GitHub project page at
-[https://github.com/rasmus/EventFlow](https://github.com/rasmus/EventFlow)
+[https://github.com/eventflow/EventFlow](https://github.com/eventflow/EventFlow)
 for more information.
 
