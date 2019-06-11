@@ -6,7 +6,7 @@ layout: frontpage
 is a easy to use async/await first CQRS+ES framework for the Microsoft .NET
 platform.
 
-View documentation at <a href="http://docs.geteventflow.net/">http://docs.geteventflow.net/</a>.
+View documentation at <a href="https://docs.geteventflow.net/">https://docs.geteventflow.net/</a>.
 
 {% highlight csharp %}
 using (var resolver = EventFlowOptions.New
