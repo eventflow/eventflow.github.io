@@ -4,7 +4,7 @@ import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 const Logo = React.memo<SvgIconProps>(props => {
   return (
     <SvgIcon {...props} viewBox="0 0 32 32">
-      <g fill-rule="nonzero" fill="none">
+      <g fillRule="nonzero" fill="none">
         <path d="M16 0L0 2.06v27.969L16 32l16-1.971V2.06z" />
         <path fill="#F5F3EF" d="M1.81 3.65L16 5.399v24.778L1.81 28.43z" />
         <path fill="#CFCCC7" d="M30.19 3.65L16 5.399v24.778l14.19-1.747z" />

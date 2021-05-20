@@ -15,12 +15,17 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "babel-plugin-prismjs": "^2.0.1",
     "gatsby": "^3.4.1",
     "gatsby-theme-material-ui": "^2.0.1",
+    "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.16.5",
+    "babel-preset-gatsby": "^1.5.0",
+    "clsx": "^1.1.1",
     "prettier": "2.2.1"
   },
   "repository": {

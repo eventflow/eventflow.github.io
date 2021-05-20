@@ -3,6 +3,7 @@ import { Container } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import Logo from './../components/Logo'
 import Button from '@material-ui/core/Button'
+import CodeExample from './../components/CodeExample'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 const styles = ({ palette, spacing }: Theme) =>
@@ -78,6 +79,7 @@ const HomePage = React.memo<any>(() => {
           </div>
           <Logo className={classes.logo} />
         </header>
+        <CodeExample />
       </Container>
     </div>
   )
