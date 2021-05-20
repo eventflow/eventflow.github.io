@@ -5,6 +5,21 @@
  */
 
 module.exports = {
-  /* Your site config here */
-  plugins: ['gatsby-theme-material-ui'],
+  plugins: [
+    {
+      resolve: 'gatsby-theme-material-ui',
+      options: {
+        webFontsConfig: {
+          fonts: {
+            google: [
+              {
+                family: 'Raleway',
+                variants: ['400', '600', '800'],
+              },
+            ],
+          },
+        },
+      },
+    },
+  ],
 }
