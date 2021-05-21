@@ -7,6 +7,7 @@ const styles = ({ palette, spacing }: Theme) =>
   createStyles({
     codeContainer: {
       borderRadius: spacing(1),
+      maxWidth: '700px',
     },
   })
 

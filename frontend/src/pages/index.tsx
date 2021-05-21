@@ -4,29 +4,31 @@ import { Typography } from '@material-ui/core'
 import Logo from './../components/Logo'
 import Button from '@material-ui/core/Button'
 import CodeExample from './../components/CodeExample'
+import PageBar from './../components/PageBar'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
-const styles = ({ palette, spacing }: Theme) =>
+const styles = ({ palette, spacing, typography }: Theme) =>
   createStyles({
-    header: {
+    topSection: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       flexWrap: 'wrap',
+      marginTop: '100px',
     },
     title: {
-      fontSize: '50px',
+      fontSize: typography.pxToRem(spacing(7)),
       fontWeight: 600,
       lineHeight: 'normal',
       maxWidth: '480px',
     },
     subtitle: {
-      fontSize: '30px',
+      fontSize: typography.pxToRem(spacing(4)),
       fontWeight: 400,
       display: 'block',
     },
     logo: {
-      fontSize: '400px',
+      fontSize: typography.pxToRem(400),
     },
     uspButton: {
       marginTop: spacing(4),
@@ -36,7 +38,7 @@ const styles = ({ palette, spacing }: Theme) =>
       borderRadius: '13px',
       boxShadow: 'none',
       textTransform: 'none',
-      fontSize: '20px',
+      fontSize: typography.pxToRem(spacing(3)),
       '&:hover, &:active, &:focus': {
         backgroundColor: palette.primary,
         boxShadow: 'none',
@@ -54,7 +56,8 @@ const HomePage = React.memo<any>(() => {
   return (
     <div>
       <Container maxWidth="md">
-        <header className={classes.header}>
+        <PageBar />
+        <section className={classes.topSection}>
           <div>
             <Typography component="h1" className={classes.title}>
               Easy to use async/await first CQRS+ES framework{' '}
@@ -78,7 +81,7 @@ const HomePage = React.memo<any>(() => {
             </Button>
           </div>
           <Logo className={classes.logo} />
-        </header>
+        </section>
         <CodeExample />
       </Container>
     </div>
