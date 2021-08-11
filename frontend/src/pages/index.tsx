@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container } from '@material-ui/core'
 import { Typography } from '@material-ui/core'
 import Logo from './../components/Logo'
 import Button from '@material-ui/core/Button'
@@ -14,7 +13,10 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       flexWrap: 'wrap',
-      marginTop: '100px',
+      padding: spacing(4, 0),
+      '& div': {
+        display: 'flex',
+      },
     },
     title: {
       fontSize: typography.pxToRem(spacing(7)),
@@ -28,7 +30,7 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       display: 'block',
     },
     logo: {
-      fontSize: typography.pxToRem(400),
+      fontSize: typography.pxToRem(260),
     },
     uspButton: {
       marginTop: spacing(4),
@@ -55,35 +57,35 @@ const HomePage = React.memo<any>(() => {
   const classes = useStyles()
   return (
     <div>
-      <Container maxWidth="md">
-        <PageBar />
-        <section className={classes.topSection}>
-          <div>
-            <Typography component="h1" className={classes.title}>
-              Easy to use async/await first CQRS+ES framework{' '}
-              <span className={classes.subtitle}>
-                for the Microsoft .NET platform
-              </span>
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.uspButton}
-            >
-              Getting Started
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.uspButton}
-            >
-              Documentation
-            </Button>
-          </div>
+      <PageBar />
+      <section className={classes.topSection}>
+        <div>
+          <Typography component="h1" className={classes.title}>
+            Easy to use async/await first CQRS+ES framework{' '}
+            <span className={classes.subtitle}>
+              for the Microsoft .NET platform
+            </span>
+          </Typography>
           <Logo className={classes.logo} />
-        </section>
-        <CodeExample />
-      </Container>
+        </div>
+        <div>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.uspButton}
+          >
+            Getting Started
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.uspButton}
+          >
+            Documentation
+          </Button>
+        </div>
+      </section>
+      <CodeExample />
     </div>
   )
 })

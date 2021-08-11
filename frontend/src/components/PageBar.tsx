@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Logo from './Logo'
+import GithubStars from './GithubStars'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 const styles = ({ palette, spacing, typography }: Theme) =>
   createStyles({
     pageBar: {
       backgroundColor: palette.background.default,
+    },
+    toolbar: {
+      justifyContent: 'space-between',
     },
     framework: {
       display: 'flex',
@@ -43,39 +47,16 @@ const ElevationScroll = React.memo<IElevationScrollProps>(({ children }) => {
 
 const PageBar = React.memo<any>(() => {
   const classes = useStyles()
-  const [githubStarsNo, setGithubStarsNo] = React.useState<number | null>(null)
-
-  useEffect(() => {
-    const getGithubStars = async () => {
-      try {
-        const response = await fetch(
-          'https://api.github.com/repos/eventflow/EventFlow',
-          {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'no-cache',
-            headers: { 'Content-Type': 'application/json' },
-          }
-        )
-        const data = await response.json()
-        setGithubStarsNo(data.stargazers_count)
-      } catch (e: any) {
-        console.error('Cannot retrieve Github stars')
-      }
-    }
-
-    getGithubStars()
-  })
   return (
     <>
       <ElevationScroll>
         <AppBar className={classes.pageBar}>
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <div className={classes.framework}>
               <Logo className={classes.frameworkLogo} />
               <span className={classes.frameworkName}>EventFlow</span>
             </div>
-            {githubStarsNo && <span>Github Stars: {githubStarsNo}</span>}
+            <GithubStars />
           </Toolbar>
         </AppBar>
       </ElevationScroll>
