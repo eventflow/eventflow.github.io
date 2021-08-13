@@ -9,7 +9,8 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 const styles = ({ palette, spacing, typography }: Theme) =>
   createStyles({
     pageBar: {
-      backgroundColor: palette.background.default,
+      background:
+        'linear-gradient(to right, rgb(219, 230, 253) 0%, rgb(241, 236, 195) 100%)',
     },
     toolbar: {
       justifyContent: 'space-between',
@@ -25,6 +26,7 @@ const styles = ({ palette, spacing, typography }: Theme) =>
     frameworkName: {
       fontWeight: 800,
       fontSize: typography.pxToRem(spacing(3)),
+      color: palette.text.primary,
     },
   })
 
