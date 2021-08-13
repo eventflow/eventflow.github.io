@@ -64,7 +64,7 @@ const CodeExample = React.memo<any>(() => {
         variant="h3"
         className={classes.codeSectionTitle}
       >
-        Getting Started
+        Code Example
       </Typography>
       <pre className={clsx('line-numbers', classes.codeContainer)}>
         <code className="language-csharp">{code}</code>

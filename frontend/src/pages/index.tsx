@@ -46,12 +46,29 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       paddingTop: spacing(1),
       paddingBottom: spacing(1),
       color: '#fff',
-      borderRadius: '4px',
+      borderRadius: `${spacing(0.5)}px`,
       boxShadow: 'none',
       textTransform: 'none',
       fontSize: typography.pxToRem(spacing(3)),
       '&:hover, &:active, &:focus': {
-        backgroundColor: palette.primary,
+        backgroundColor: palette.secondary.main,
+        boxShadow: 'none',
+      },
+      '&:first-of-type': {
+        marginRight: spacing(2),
+      },
+    },
+    textButton: {
+      paddingTop: spacing(1),
+      paddingBottom: spacing(1),
+      color: '#fff',
+      borderRadius: `${spacing(0.5)}px`,
+      boxShadow: 'none',
+      textTransform: 'none',
+      fontSize: typography.pxToRem(spacing(2)),
+      minWidth: '150px',
+      '&:hover, &:active, &:focus': {
+        backgroundColor: palette.secondary.main,
         boxShadow: 'none',
       },
       '&:first-of-type': {
@@ -92,6 +109,11 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       padding: spacing(7, 0),
       backgroundColor: '#0A1931',
     },
+    footer: {
+      padding: spacing(4, 0),
+      backgroundColor: palette.background.default,
+      textAlign: 'center',
+    },
   })
 
 const useStyles = makeStyles(styles)
@@ -117,14 +139,14 @@ const HomePage = React.memo<any>(() => {
             color="secondary"
             className={classes.uspButton}
           >
-            Getting Started
+            Code Example
           </Button>
           <Button
             variant="contained"
             color="secondary"
             className={classes.uspButton}
           >
-            Documentation
+            Getting Started
           </Button>
         </div>
       </section>
@@ -141,7 +163,7 @@ const HomePage = React.memo<any>(() => {
               </Typography>
               <p>
                 Designed with sensible defaults and implementations that make it
-                easy to create an example application
+                easy to create an example application.
               </p>
             </div>
           </li>
@@ -157,7 +179,7 @@ const HomePage = React.memo<any>(() => {
               <p>
                 EventFlow uses interfaces for every part of its core, making it
                 easy to replace or extend existing features with custom
-                implementation
+                implementation.
               </p>
             </div>
           </li>
@@ -181,13 +203,31 @@ const HomePage = React.memo<any>(() => {
               <Typography component="h2" variant="h4">
                 MIT licensed
               </Typography>
-              <p>Easy to understand and use license for enterprise</p>
+              <p>Easy to understand and use license for enterprise.</p>
             </div>
           </li>
         </ul>
       </section>
       <section className={classes.codeSection}>
         <CodeExample />
+      </section>
+      <section className={classes.footer}>
+        <div>
+          <Button
+            color="secondary"
+            variant="contained"
+            className={classes.textButton}
+          >
+            Documentation
+          </Button>
+          <Button
+            color="secondary"
+            variant="contained"
+            className={classes.textButton}
+          >
+            GitHub
+          </Button>
+        </div>
       </section>
     </div>
   )
