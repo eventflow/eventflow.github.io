@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 import Logo from './../components/Logo'
 import Button from '@material-ui/core/Button'
 import CodeExample from './../components/CodeExample'
@@ -78,7 +78,7 @@ const styles = ({ palette, spacing, typography }: Theme) =>
           marginTop: spacing(4),
         },
         '& p': {
-          margin: 0,
+          margin: spacing(1, 0, 0),
           maxWidth: '450px',
           fontSize: typography.pxToRem(18),
         },
@@ -88,7 +88,10 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       fontSize: typography.pxToRem(spacing(9)),
       marginRight: spacing(2),
     },
-    featureTitle: {},
+    codeSection: {
+      padding: spacing(7, 0),
+      backgroundColor: '#0A1931',
+    },
   })
 
 const useStyles = makeStyles(styles)
@@ -133,11 +136,7 @@ const HomePage = React.memo<any>(() => {
               color="primary"
             />
             <div>
-              <Typography
-                component="h2"
-                variant="h4"
-                className={classes.featureTitle}
-              >
+              <Typography component="h2" variant="h4">
                 Easy to use
               </Typography>
               <p>
@@ -152,11 +151,7 @@ const HomePage = React.memo<any>(() => {
               color="primary"
             />
             <div>
-              <Typography
-                component="h2"
-                variant="h4"
-                className={classes.featureTitle}
-              >
+              <Typography component="h2" variant="h4">
                 Highly configurable and extendable
               </Typography>
               <p>
@@ -172,11 +167,7 @@ const HomePage = React.memo<any>(() => {
               color="primary"
             />
             <div>
-              <Typography
-                component="h2"
-                variant="h4"
-                className={classes.featureTitle}
-              >
+              <Typography component="h2" variant="h4">
                 No use of threads or background workers
               </Typography>
             </div>
@@ -187,11 +178,7 @@ const HomePage = React.memo<any>(() => {
               color="primary"
             />
             <div>
-              <Typography
-                component="h2"
-                variant="h4"
-                className={classes.featureTitle}
-              >
+              <Typography component="h2" variant="h4">
                 MIT licensed
               </Typography>
               <p>Easy to understand and use license for enterprise</p>
@@ -199,7 +186,9 @@ const HomePage = React.memo<any>(() => {
           </li>
         </ul>
       </section>
-      <CodeExample />
+      <section className={classes.codeSection}>
+        <CodeExample />
+      </section>
     </div>
   )
 })

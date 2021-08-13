@@ -1,13 +1,27 @@
 import React, { useEffect } from 'react'
 import Prism from 'prismjs'
 import clsx from 'clsx'
+import Typography from '@material-ui/core/Typography'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 const styles = ({ palette, spacing }: Theme) =>
   createStyles({
     codeContainer: {
-      borderRadius: spacing(1),
+      borderRadius: spacing(0.5),
       maxWidth: '700px',
+      background: 'transparent !important',
+      margin: '0 !important',
+      border: '1px solid #DBE6FD',
+    },
+    centerCodeBlock: {
+      maxWidth: '700px',
+      margin: '0 auto',
+    },
+    codeSectionTitle: {
+      color: '#DBE6FD',
+      textAlign: 'center',
+      marginBottom: spacing(6),
+      fontWeight: 700,
     },
   })
 
@@ -44,9 +58,18 @@ const CodeExample = React.memo<any>(() => {
     Prism.highlightAll()
   })
   return (
-    <pre className={clsx('line-numbers', classes.codeContainer)}>
-      <code className="language-csharp">{code}</code>
-    </pre>
+    <div className={classes.centerCodeBlock}>
+      <Typography
+        component="h3"
+        variant="h3"
+        className={classes.codeSectionTitle}
+      >
+        Getting Started
+      </Typography>
+      <pre className={clsx('line-numbers', classes.codeContainer)}>
+        <code className="language-csharp">{code}</code>
+      </pre>
+    </div>
   )
 })
 
