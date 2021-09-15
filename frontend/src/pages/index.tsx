@@ -8,9 +8,14 @@ import FlightRoundedIcon from '@material-ui/icons/FlightRounded'
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded'
 import LinearScaleRoundedIcon from '@material-ui/icons/LinearScaleRounded'
 import MenuBookRoundedIcon from '@material-ui/icons/MenuBookRounded'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  useTheme,
+} from '@material-ui/core/styles'
 
-const styles = ({ palette, spacing, typography }: Theme) =>
+const styles = ({ palette, spacing, typography, breakpoints }: Theme) =>
   createStyles({
     topSection: {
       display: 'flex',
@@ -21,8 +26,13 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       padding: spacing(7, 0),
       '& div': {
         display: 'flex',
+        flexWrap: 'wrap',
       },
       borderBottom: '1px solid rgb(229, 233, 242)',
+      [breakpoints.down('sm')]: {
+        paddingLeft: spacing(2),
+        paddingRight: spacing(2),
+      },
     },
     title: {
       fontSize: typography.pxToRem(spacing(7)),
@@ -30,20 +40,33 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       lineHeight: 'normal',
       maxWidth: '480px',
       marginRight: spacing(3),
+      [breakpoints.down('sm')]: {
+        fontSize: typography.pxToRem(spacing(3)),
+        fontWeight: 400,
+        marginRight: 0,
+      },
     },
     subtitle: {
       fontSize: typography.pxToRem(spacing(4)),
       fontWeight: 400,
       display: 'block',
+      [breakpoints.down('sm')]: {
+        fontSize: typography.pxToRem(spacing(3)),
+        display: 'inline',
+      },
     },
     logo: {
       fontSize: typography.pxToRem(260),
+      [breakpoints.down('sm')]: {
+        display: 'none',
+      },
     },
     uspButtons: {
-      paddingTop: spacing(7),
+      // paddingTop: spacing(7),
     },
     uspButton: {
       paddingTop: spacing(1),
+      marginTop: spacing(7),
       paddingBottom: spacing(1),
       color: '#fff',
       borderRadius: `${spacing(0.5)}px`,
@@ -56,6 +79,14 @@ const styles = ({ palette, spacing, typography }: Theme) =>
       },
       '&:first-of-type': {
         marginRight: spacing(2),
+        [breakpoints.down('sm')]: {
+          marginRight: spacing(1),
+        },
+      },
+      width: '204px',
+      [breakpoints.down('sm')]: {
+        fontSize: typography.pxToRem(spacing(3)),
+        width: 'auto',
       },
     },
     textButton: {
@@ -94,16 +125,30 @@ const styles = ({ palette, spacing, typography }: Theme) =>
         '&:not(:first-child)': {
           marginTop: spacing(4),
         },
+        '& h2': {
+          [breakpoints.down('sm')]: {
+            fontSize: typography.pxToRem(spacing(3)),
+          },
+        },
         '& p': {
           margin: spacing(1, 0, 0),
           maxWidth: '450px',
           fontSize: typography.pxToRem(18),
+          [breakpoints.down('sm')]: {
+            fontSize: typography.pxToRem(spacing(2)),
+          },
         },
+      },
+      [breakpoints.down('sm')]: {
+        padding: spacing(4, 2),
       },
     },
     featureIcon: {
       fontSize: typography.pxToRem(spacing(9)),
       marginRight: spacing(2),
+      [breakpoints.down('sm')]: {
+        fontSize: typography.pxToRem(spacing(6)),
+      },
     },
     codeSection: {
       padding: spacing(7, 0),
@@ -120,15 +165,27 @@ const useStyles = makeStyles(styles)
 
 const HomePage = React.memo<any>(() => {
   const classes = useStyles()
+  const exampleRef = React.useRef<HTMLElement | null>(null)
+  const pageBarRef = React.useRef<HTMLElement>()
+
+  const scrollToCodeExample = () => {
+    const pageBarWidth = pageBarRef.current?.clientHeight || 0
+    const offsetTop =
+      exampleRef && exampleRef.current ? exampleRef.current.offsetTop : 0
+    window.scrollTo({
+      top: offsetTop - (pageBarWidth + 24), // 24 for more spacing
+      behavior: 'smooth',
+    })
+  }
   return (
     <div>
-      <PageBar />
+      <PageBar ref={pageBarRef} />
       <section className={classes.topSection}>
         <div>
           <Typography component="h1" className={classes.title}>
             Easy to use async/await first CQRS+ES framework{' '}
             <span className={classes.subtitle}>
-              for the Microsoft .NET platform
+              for the Microsoft .NET platform.
             </span>
           </Typography>
           <Logo className={classes.logo} />
@@ -138,15 +195,19 @@ const HomePage = React.memo<any>(() => {
             variant="contained"
             color="secondary"
             className={classes.uspButton}
+            component="a"
+            onClick={scrollToCodeExample}
           >
-            Code Example
+            Example
           </Button>
           <Button
             variant="contained"
             color="secondary"
             className={classes.uspButton}
+            component="a"
+            href="https://docs.geteventflow.net/"
           >
-            Getting Started
+            Documentation
           </Button>
         </div>
       </section>
@@ -208,7 +269,11 @@ const HomePage = React.memo<any>(() => {
           </li>
         </ul>
       </section>
-      <section className={classes.codeSection}>
+      <section
+        className={classes.codeSection}
+        id="code-example-section"
+        ref={exampleRef}
+      >
         <CodeExample />
       </section>
       <section className={classes.footer}>
@@ -217,6 +282,8 @@ const HomePage = React.memo<any>(() => {
             color="secondary"
             variant="contained"
             className={classes.textButton}
+            component="a"
+            href="https://docs.geteventflow.net/"
           >
             Documentation
           </Button>
@@ -224,6 +291,8 @@ const HomePage = React.memo<any>(() => {
             color="secondary"
             variant="contained"
             className={classes.textButton}
+            component="a"
+            href="https://github.com/eventflow/EventFlow"
           >
             GitHub
           </Button>

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
-const styles = ({ palette, spacing }: Theme) =>
+const styles = ({ palette, spacing, breakpoints, typography }: Theme) =>
   createStyles({
     codeContainer: {
       borderRadius: spacing(0.5),
@@ -22,6 +22,9 @@ const styles = ({ palette, spacing }: Theme) =>
       textAlign: 'center',
       marginBottom: spacing(6),
       fontWeight: 700,
+      [breakpoints.down('sm')]: {
+        fontSize: typography.pxToRem(spacing(4)),
+      },
     },
   })
 
@@ -51,7 +54,7 @@ const code = `using (var resolver = EventFlowOptions.New
   }
   `
 
-const CodeExample = React.memo<any>(() => {
+const CodeExample: React.FC<any> = () => {
   const classes = useStyles()
   useEffect(() => {
     // call the highlightAll() function to style our code blocks
@@ -64,13 +67,13 @@ const CodeExample = React.memo<any>(() => {
         variant="h3"
         className={classes.codeSectionTitle}
       >
-        Code Example
+        Example
       </Typography>
       <pre className={clsx('line-numbers', classes.codeContainer)}>
         <code className="language-csharp">{code}</code>
       </pre>
     </div>
   )
-})
+}
 
 export default CodeExample
