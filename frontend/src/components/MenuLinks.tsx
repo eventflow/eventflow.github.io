@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Link from '@material-ui/core/Link'
 import GithubIcon from './../media/github-icon.svg'
 import LibraryBooksRoundedIcon from '@material-ui/icons/LibraryBooksRounded'
@@ -37,7 +37,7 @@ const styles = ({ spacing, typography, breakpoints }: Theme) =>
   })
 
 const useStyles = makeStyles(styles)
-const MenuLinks: React.FC<any> = () => {
+export const MenuLinks: React.FC<any> = () => {
   const classes = useStyles()
   return (
     <div className={classes.links}>
@@ -52,5 +52,3 @@ const MenuLinks: React.FC<any> = () => {
     </div>
   )
 }
-
-export default MenuLinks

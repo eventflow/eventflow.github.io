@@ -1,7 +1,7 @@
 import React from 'react'
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon'
 
-const Logo = React.memo<SvgIconProps>(props => {
+export const Logo = React.memo<SvgIconProps>(props => {
   return (
     <SvgIcon {...props} viewBox="0 0 32 32">
       <g fillRule="nonzero" fill="none">
@@ -24,5 +24,3 @@ const Logo = React.memo<SvgIconProps>(props => {
     </SvgIcon>
   )
 })
-
-export default Logo

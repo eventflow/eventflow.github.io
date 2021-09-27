@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import Typography from '@material-ui/core/Typography'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
-const styles = ({ palette, spacing, breakpoints, typography }: Theme) =>
+const styles = ({ spacing, breakpoints, typography }: Theme) =>
   createStyles({
     codeContainer: {
       borderRadius: spacing(0.5),
@@ -54,7 +54,7 @@ const code = `using (var resolver = EventFlowOptions.New
   }
   `
 
-const CodeExample: React.FC<any> = () => {
+export const CodeExample: React.FC<any> = () => {
   const classes = useStyles()
   useEffect(() => {
     // call the highlightAll() function to style our code blocks
@@ -75,5 +75,3 @@ const CodeExample: React.FC<any> = () => {
     </div>
   )
 }
-
-export default CodeExample

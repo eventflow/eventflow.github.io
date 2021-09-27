@@ -2,8 +2,7 @@ import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import Logo from './Logo'
-import MenuLinks from './MenuLinks'
+import { Logo, MenuLinks } from './'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 
 const styles = ({ palette, spacing, typography, mixins }: Theme) =>
@@ -48,7 +47,7 @@ const ElevationScroll = React.memo<IElevationScrollProps>(({ children }) => {
   })
 })
 
-const PageBar = React.memo<any>(() => {
+export const PageBar = React.memo<any>(() => {
   const classes = useStyles()
   return (
     <ElevationScroll>
@@ -67,5 +66,3 @@ const PageBar = React.memo<any>(() => {
     </ElevationScroll>
   )
 })
-
-export default PageBar
