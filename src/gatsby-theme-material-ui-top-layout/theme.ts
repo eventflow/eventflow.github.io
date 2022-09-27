@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core'
+import { createTheme } from '@mui/material'
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: ['Raleway', 'sans-serif'].join(','),
   },
